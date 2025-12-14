@@ -1,0 +1,59 @@
+BEGIN
+   class Direction (...):
+       CONST UP = "UP"
+       CONST DOWN = "DOWN"
+       CONST RIGTH = "RIGTH"
+       CONST LEFT = "LEFT"
+    END_CLASS
+
+    CLASS Snake():
+        
+        def __init__(self, initial_position, initial_direction: Direction):
+           self.body_position= initial_position
+           self.current_direction = initial_direction 
+           self.is_alive = True
+        
+        def move(self, direction):
+            pass
+        
+        def growth(self):
+            pass
+        
+        def change_direction(self, new_direction: Direction):
+           pass
+        
+    END_CLASS
+
+    CLASS Food():
+       
+       def __init__(self, initial_position):
+           self.current_position = initial_position
+    END_CLASS
+
+    CLASS Game():
+        def __init__(self, windows_size, snake_instance: Snake, food_position, color):
+            self.windows_size = windows_size
+            self.snake = snake_instance
+            self.food_position = food_position
+            self.square_size = windows_size * 0.10  #square size should be equal that the 10% of the entire screen size
+            self.color = color
+
+        def game_loop(self,snake):
+            pass
+        
+        def food_colision(self,food_position):
+            pass
+        
+        def set_color(self,color):
+        
+        def collision(self,snake, windows_size):
+            pass
+        
+        def set_table(self, windows_size):
+            pass
+
+        def snake_size(self,snake, square_size):
+            pass
+    END_CLASS
+
+END
