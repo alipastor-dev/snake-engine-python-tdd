@@ -43,6 +43,7 @@ def test_move_down():
 
 
 def test_grow_and_move():
+
     direction = Direction.RIGHT
     initial_positions = [(3, 1), (2, 1), (1, 1)]
     expected_body = [(5, 1), (4, 1), (3, 1), (2, 1)]
@@ -51,3 +52,23 @@ def test_grow_and_move():
     snake.grow()
     snake.move()
     assert snake.body_positions == expected_body
+
+
+def test_change_direction_block_180_degree():
+    direction = Direction.RIGHT
+    new_direction = Direction.LEFT
+    initial_positions = [(3, 1), (2, 1), (1, 1)]
+    expected_direction = direction
+    snake = Snake(initial_positions, direction)
+    snake.change_direction(new_direction)
+    
+    assert snake.direction == expected_direction
+
+
+def test_check_self_collision():
+    collision_positions = [(4, 1), (3, 1), (4, 1), (1, 1)]
+    snake = Snake(collision_positions, Direction.RIGHT)
+
+    is_collided = snake.check_self_collision()
+
+    assert is_collided is True

@@ -35,7 +35,7 @@ class Snake():
         Direction.RIGHT: Direction.LEFT  
     }
 
-    def __init__(self, initial_position: list[tuple[int, int]], 
+    def __init__(self, initial_position: list[tuple[int, int]],
                  initial_direction: Direction):
         """
         Initializes the snake with its body segments and starting direction.
@@ -50,6 +50,11 @@ class Snake():
         self.is_alive = True
         self.should_grow = False
 
+    def check_self_collision(self):
+
+        head = self.body_positions[0]
+        return head in self.body_positions[1:]
+
     def move(self):
         # get the current position of head
         head_x, head_y = self.body_positions[0]
@@ -57,8 +62,8 @@ class Snake():
         # get the value of the coordinates for the movemente of the snake
         dx, dy = self.MOVEMENT_MAP[self.direction]
 
-        # add the value of the coordinates to the current 
-        # position to make snake move        
+        # add the value of the coordinates to the current
+        # position to make snake move
         head_x += dx
         head_y += dy
 
@@ -68,11 +73,15 @@ class Snake():
 
             self.body_positions.pop(-1)
 
+        if self.check_self_collision():
+
+            self.is_alive = False
         self.should_grow = False
 
     def grow(self):
         self.should_grow = True
 
     def change_direction(self, new_direction: Direction):
+
         if self.MOVEMENT_LIMITS[new_direction] != self.direction:
             self.direction = new_direction
