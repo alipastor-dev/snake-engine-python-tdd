@@ -73,11 +73,12 @@ class Snake():
 
             self.body_positions.pop(-1)
 
+        self.should_grow = False
+
         if self.check_self_collision():
 
             self.is_alive = False
-        self.should_grow = False
-
+        
     def grow(self):
         self.should_grow = True
 

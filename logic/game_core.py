@@ -4,7 +4,7 @@ from logic.snake import Snake, Direction
 from logic.food import Food
 
 
-class Game_Core():
+class Game():
 
     def __init__(self, board_width, board_height):
         self.board_width = board_width
