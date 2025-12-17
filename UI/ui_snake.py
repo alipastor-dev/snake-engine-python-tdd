@@ -24,12 +24,13 @@ class Game_UI():
                 if event.type == pygame.QUIT:
                     self.game.is_running = False
 
-                self._handle_input()
-                self.game.update_game_state()
-                self._draw_elements()
-                self.clock.tick(game_config.GAME_SPEED)
-                pygame.display.flip()
+            self._handle_input()
+            self.game.update_game_state()
+            self._draw_elements()
+            self.clock.tick(game_config.GAME_SPEED)
+            pygame.display.flip()
 
+        self._display_game_over()
         pygame.quit()
         exit()
 
@@ -78,3 +79,37 @@ class Game_UI():
         self.screen.blit(texto_surface, texto_rect)
         
         pygame.display.flip()
+
+    def _display_game_over(self):
+        self.screen.fill(pygame.Color(0, 0, 0))
+
+        # Draw game_over text_screen
+        font_game_over = pygame.font.SysFont("arial", 30, True)
+        text_game_over = "GAME OVER"
+        texto_surface_game_over = font_game_over.render(text_game_over, True, pygame.Color("grey")) 
+        texto_rect_game_over = texto_surface_game_over.get_rect(center=(self.windows_x // 2, self.windows_y // 2 - 50))
+        self.screen.blit(texto_surface_game_over, texto_rect_game_over)
+
+        # Draw final score
+        font = pygame.font.SysFont("arial", 20, True)
+        text = f"Your final score: {self.game.score}"
+        texto_surface = font.render(text, True, pygame.Color("grey")) 
+        texto_rect = texto_surface.get_rect()
+        texto_rect.topleft = (10, 40)
+        self.screen.blit(texto_surface, texto_rect)
+
+        # Infinite loop waiting por any commamd:
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT or event.type == pygame.KEYDOWN:
+                    pygame.quit()
+                    exit()
+            pygame.display.flip()
+
+
+if __name__ == "__main__":
+    # Creamos la instancia de la interfaz de usuario
+    ui = Game_UI()
+    
+    # Arrancamos el bucle principal del juego
+    ui.start_game()
