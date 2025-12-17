@@ -1,4 +1,4 @@
-from logic.game_core import Game
+from logic.game import Game
 from logic.snake import Direction
 
 # -------- Begin wall collission tests ----------
