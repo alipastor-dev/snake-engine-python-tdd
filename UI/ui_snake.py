@@ -51,7 +51,8 @@ class Game_UI():
     def _draw_elements(self):
         food_pos_x, food_pos_y = self.game.food.position
         food_square = [(food_pos_x * game_config.TILE_SIZE),
-        (food_pos_y * game_config.TILE_SIZE), game_config.TILE_SIZE, game_config.TILE_SIZE]
+        (food_pos_y * game_config.TILE_SIZE), game_config.TILE_SIZE, 
+            game_config.TILE_SIZE]
 
         self.screen.fill(pygame.Color(0, 0, 0))
         pygame.draw.rect(self.screen, pygame.Color(255, 60, 100), food_square)
@@ -64,7 +65,7 @@ class Game_UI():
                             game_config.TILE_SIZE]
             
             if index == 0:
-                pygame.draw.rect(self.screen, pygame.Color(0, 255, 0), 
+                pygame.draw.rect(self.screen, pygame.Color(255, 0, 0), 
                                  snake_square)
             else:
                 pygame.draw.rect(self.screen, pygame.Color(255, 0, 0), 
