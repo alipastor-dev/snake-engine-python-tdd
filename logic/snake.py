@@ -15,9 +15,9 @@ class Direction(Enum):
 class Snake():
 
     """
-    Manages the internal state of the snake 
+    Manages the internal state of the snake
    (positions, direction, and life status).
-    This class is part of the Core Logic (Backend) 
+    This class is part of the Core Logic (Backend)
     and must not be aware of Pygame.
     """
 
@@ -36,7 +36,7 @@ class Snake():
     }
 
     def __init__(self, initial_position: list[tuple[int, int]],
-                 initial_direction: Direction):
+                 initial_direction: Direction) -> None:
         """
         Initializes the snake with its body segments and starting direction.
 
@@ -50,12 +50,12 @@ class Snake():
         self.is_alive = True
         self.should_grow = False
 
-    def check_self_collision(self):
+    def check_self_collision(self) -> bool:
 
         head = self.body_positions[0]
         return head in self.body_positions[1:]
 
-    def move(self):
+    def move(self) -> None:
         # get the current position of head
         head_x, head_y = self.body_positions[0]
 
@@ -78,11 +78,11 @@ class Snake():
         if self.check_self_collision():
 
             self.is_alive = False
-        
-    def grow(self):
+
+    def grow(self) -> None:
         self.should_grow = True
 
-    def change_direction(self, new_direction: Direction):
+    def change_direction(self, new_direction: Direction) -> None:
 
         if self.MOVEMENT_LIMITS[new_direction] != self.direction:
             self.direction = new_direction

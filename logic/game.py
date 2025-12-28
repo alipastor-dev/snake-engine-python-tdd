@@ -6,7 +6,7 @@ from logic.food import Food
 
 class Game():
 
-    def __init__(self, board_width, board_height):
+    def __init__(self, board_width, board_height) -> None:
         self.board_width = board_width
         self.board_height = board_height
         self.is_running = True
@@ -14,7 +14,7 @@ class Game():
         self.snake = Snake([(3, 1), (2, 1), (1, 1)], Direction.RIGHT)
         self.place_food()
 
-    def place_food(self):
+    def place_food(self) -> None:
 
         while True:
             pos_x = randint(0, self.board_width - 1)
@@ -26,15 +26,15 @@ class Game():
                 self.food = Food(new_pos)
                 break
 
-    def check_wall_collision(self):
+    def check_wall_collision(self) -> bool:
         head = self.snake.body_positions[0]
-        overpassed_x = head[0] >= self.board_width or head[0] < 0
-        overpassed_y = head[1] >= self.board_height or head[1] < 0
+        overpassed_x = head[0] >= self.board_width - 1 or head[0] < 0
+        overpassed_y = head[1] >= self.board_height - 1 or head[1] < 0
         collide = (overpassed_x or overpassed_y)
 
         return collide
 
-    def check_food_collision(self):
+    def check_food_collision(self) -> bool:
         food_pos = self.food.position
         head = self.snake.body_positions[0]
 
@@ -46,7 +46,7 @@ class Game():
         else:
             return False
 
-    def update_game_state(self):
+    def update_game_state(self) -> None:
 
         if not self.is_running:
             return
