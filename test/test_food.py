@@ -1,7 +1,7 @@
 from logic.food import Food
 
 
-def test_food_position():
+def test_food_position() -> None:
     initial_food_position = (5, 5)
     food = Food(initial_food_position)
 

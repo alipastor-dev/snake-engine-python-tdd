@@ -1,7 +1,7 @@
 from logic.snake import Snake, Direction
 
 
-def test_move_rigth():
+def test_move_rigth() -> None:
     direction = Direction.RIGHT
     initial_positions = [(3, 1), (2, 1), (1, 1)]
     expected_positions = [(4, 1), (3, 1), (2, 1)]
@@ -11,7 +11,7 @@ def test_move_rigth():
     assert snake.body_positions == expected_positions
 
 
-def test_move_up():
+def test_move_up() -> None:
     direction = Direction.UP
     initial_positions = [(3, 1), (2, 1), (1, 1)]
     expected_positions = [(3, 0), (3, 1), (2, 1)]
@@ -21,7 +21,7 @@ def test_move_up():
     assert snake.body_positions == expected_positions
 
 
-def test_move_left():
+def test_move_left() -> None:
     direction = Direction.LEFT
     initial_positions = [(3, 1), (2, 1), (1, 1)]
     expected_positions = [(2, 1), (3, 1), (2, 1)]
@@ -31,7 +31,7 @@ def test_move_left():
     assert snake.body_positions == expected_positions
 
 
-def test_move_down():
+def test_move_down() -> None:
 
     direction = Direction.DOWN
     initial_positions = [(3, 1), (2, 1), (1, 1)]
@@ -42,7 +42,7 @@ def test_move_down():
     assert snake.body_positions == expected_positions
 
 
-def test_grow_and_move():
+def test_grow_and_move() -> None:
 
     direction = Direction.RIGHT
     initial_positions = [(3, 1), (2, 1), (1, 1)]
@@ -54,18 +54,18 @@ def test_grow_and_move():
     assert snake.body_positions == expected_body
 
 
-def test_change_direction_block_180_degree():
+def test_change_direction_block_180_degree() -> None:
     direction = Direction.RIGHT
     new_direction = Direction.LEFT
     initial_positions = [(3, 1), (2, 1), (1, 1)]
     expected_direction = direction
     snake = Snake(initial_positions, direction)
     snake.change_direction(new_direction)
-    
+
     assert snake.direction == expected_direction
 
 
-def test_check_self_collision():
+def test_check_self_collision() -> None:
     collision_positions = [(4, 1), (3, 1), (4, 1), (1, 1)]
     snake = Snake(collision_positions, Direction.RIGHT)
 
